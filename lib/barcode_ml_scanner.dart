@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 
 export 'package:google_ml_kit/google_ml_kit.dart'
-    show Barcode, BarcodeType, BarcodeValue;
+    show Barcode, BarcodeType, BarcodeFormat, BarcodeValue;
 
 const double _start = 0.0;
 const double _end = 100.0;
@@ -42,6 +42,7 @@ class BarcodeMlScanner extends StatefulWidget {
     ),
     this.lineGradientStart = const Color(0xffEE8B7E),
     this.lineGradientEnd = Colors.yellow,
+    this.formats,
   }) : super(key: key);
 
   final void Function(List<Barcode> barcodes)? onFound;
@@ -49,14 +50,15 @@ class BarcodeMlScanner extends StatefulWidget {
   final BorderSide rectBorder;
   final Color lineGradientStart;
   final Color lineGradientEnd;
+  final List<int>? formats;
 
   @override
-  BarcodeMlScannerState createState() => BarcodeMlScannerState();
+  BarcodeMlScannerState createState() => BarcodeMlScannerState(this.formats);
 }
 
 class BarcodeMlScannerState extends State<BarcodeMlScanner>
     with SingleTickerProviderStateMixin {
-  final BarcodeScanner barcodeScanner = GoogleMlKit.vision.barcodeScanner();
+  late final BarcodeScanner barcodeScanner;
   CameraController? _controller;
   late AnimationController animationController;
   late Tween<double> tweenLinePosition;
@@ -66,6 +68,10 @@ class BarcodeMlScannerState extends State<BarcodeMlScanner>
   List<CameraDescription> _cameras = [];
   int _cameraIndex = 0;
   bool isBusy = false;
+
+  BarcodeMlScannerState(List<int>? formats) {
+    this.barcodeScanner = GoogleMlKit.vision.barcodeScanner(formats);
+  }
 
   @override
   void initState() {
