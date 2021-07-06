@@ -7,7 +7,7 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.6.1"
+    version: "2.7.0"
   barcode_ml_scanner:
     dependency: "direct main"
     description:
@@ -98,9 +98,11 @@ packages:
   google_ml_kit:
     dependency: transitive
     description:
-      name: google_ml_kit
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: "66ed6835d31d142a00d982370d665ec9a1f56cdb"
+      url: "git://github.com/bharat-biradar/Google-Ml-Kit-plugin.git"
+    source: git
     version: "0.6.0"
   matcher:
     dependency: transitive
@@ -115,7 +117,7 @@ packages:
       name: meta
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.0"
+    version: "1.4.0"
   path:
     dependency: transitive
     description:
@@ -197,7 +199,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.0"
+    version: "0.4.0"
   typed_data:
     dependency: transitive
     description:

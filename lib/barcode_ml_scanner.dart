@@ -50,7 +50,7 @@ class BarcodeMlScanner extends StatefulWidget {
   final BorderSide rectBorder;
   final Color lineGradientStart;
   final Color lineGradientEnd;
-  final List<int>? formats;
+  final List<BarcodeFormat>? formats;
 
   @override
   BarcodeMlScannerState createState() => BarcodeMlScannerState(this.formats);
@@ -69,7 +69,7 @@ class BarcodeMlScannerState extends State<BarcodeMlScanner>
   int _cameraIndex = 0;
   bool isBusy = false;
 
-  BarcodeMlScannerState(List<int>? formats) {
+  BarcodeMlScannerState(List<BarcodeFormat>? formats) {
     this.barcodeScanner = GoogleMlKit.vision.barcodeScanner(formats);
   }
 
